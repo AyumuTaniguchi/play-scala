@@ -1,4 +1,4 @@
-package v1.post
+package v1.comment
 
 import javax.inject.Inject
 
@@ -7,12 +7,12 @@ import play.api.routing.SimpleRouter
 import play.api.routing.sird._
 
 /**
-  * Routes and URLs to the PostResource controller.
+  * Routes and URLs to the CommentResource controller.
   */
-class PostRouter @Inject()(controller: PostController) extends SimpleRouter {
-  val prefix = "/v1/posts"
+class CommentRouter @Inject()(controller: CommentController) extends SimpleRouter {
+  val prefix = "/comments"
 
-  def link(id: PostId): String = {
+  def link(id: CommentId): String = {
     import com.netaporter.uri.dsl._
     val url = prefix / id.toString
     url.toString()
@@ -23,10 +23,7 @@ class PostRouter @Inject()(controller: PostController) extends SimpleRouter {
       controller.index
 
     case POST(p"/") =>
-      controller.process
-
-    case GET(p"/$id") =>
-      controller.show(id)
+      controller.create
   }
 
 }
