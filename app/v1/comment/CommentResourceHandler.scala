@@ -10,7 +10,7 @@ import play.api.libs.json._
 /**
   * DTO for displaying comment information.
   */
-case class CommentResource(id: String, link: String, title: String, body: String)
+case class CommentResource(id: String, link: String, content: String, contributor_name: String)
 
 object CommentResource {
   /**
